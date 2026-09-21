@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# 既定の書き込み権限を外す。CI は検証しかしないため。
+permissions:
+  contents: read
+
+jobs:
+  # このリポジトリはテンプレートであり、アプリの雛形（package.json / src/）を
+  # 意図的に含まない。検証ジョブをそのまま置くと、テンプレート自身では対象が
+  # 存在せず CI が赤くなり、その状態のまま子リポジトリへ複製されてしまう。
+  # 検証対象の有無を先に判定し、無ければ後続をスキップして緑を保つ。
+  detect:
+    runs-on: ubuntu-latest
+    outputs:
+      has-package: ${{ steps.check.outputs.has-package }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: check
+        run: |
+          if [ -f package.json ]; then
+            echo "has-package=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has-package=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  verify:
+    needs: detect
+    if: needs.detect.outputs.has-package == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          # 固定の番号を書くと、テンプレートから作られた子リポジトリで
+          # 作成時点のバージョンに固定され続ける。
+          node-version: lts/*
+          cache: npm
+      - run: npm ci
+      # 以下は CLAUDE.md の「テストの実行方法」と同じコマンドを並べている。
+      # 片方だけ変えると、どちらが正しいのか判断できなくなるため必ず揃える。
+      # 該当する script が無いリポジトリでは、そのステップを削除する
+      # （--if-present で黙って飛ばすと、検証していないことが成功に見える）。
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
