@@ -23,5 +23,5 @@
 
 ## コミット規約（.gitmessage 参照）
 
-コミットテンプレートは `dotfiles/home/.gitmessage` をグローバル設定した `commit.template`
-が供給する（`install.sh` がマシン単位で設定する）。このリポジトリ側に実体は置かない。
+コミットテンプレートはマシン側でグローバル設定された `commit.template` が供給する。
+このリポジトリに実体は置かない。`git config --get commit.template` で供給元を確認できる。
