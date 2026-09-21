@@ -25,6 +25,3 @@
 
 コミットテンプレートは `dotfiles/home/.gitmessage` をグローバル設定した `commit.template`
 が供給する（`install.sh` がマシン単位で設定する）。このリポジトリ側に実体は置かない。
-
-- タイトルは `<type>: <概要>` の Conventional Commits 形式
-- トレーラーに `Refs: #<Issue番号>` を含める
