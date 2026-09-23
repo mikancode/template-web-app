@@ -8,7 +8,7 @@
 
 - `.github/ISSUE_TEMPLATE/issue.md` — Issue の節構成
 - `.github/pull_request_template.md` — PR の節構成
-- `.github/CONTRIBUTING.md` — 人間の参画者向けの開発規約（ブランチ運用・コミット形式・コードの書き方）
+- `.github/CONTRIBUTING.md` — 人間の参画者向けの開発規約（セットアップ・ブランチ運用・コミット形式・コードの書き方）
 - `.gitattributes` — 追跡ファイルの保存形を LF に固定
 - `LICENSE` — MIT
 - `CLAUDE.md` — エージェント向けの引き継ぎ事項の雛形
@@ -26,7 +26,8 @@ GitHub 上のリポジトリ設定（Topics / ブランチ保護 / マージ方�
 
 複製後に手を入れる必要があるファイルです。いずれも `複製後に書き換える` というコメントが目印になります。
 
-- `README.md` — プロジェクト名・概要・使い方・検証コマンド
+- `README.md` — プロジェクト名・概要・使い方
+- `.github/CONTRIBUTING.md` — セットアップ手順・検証コマンド
 - `CLAUDE.md` — テストの実行方法・触ってはいけないディレクトリ
 - `LICENSE` — 著作権表記の年（このテンプレートでは 2026 で固定してある）
 - `docs/USAGE.md` — このファイル自体を削除する
