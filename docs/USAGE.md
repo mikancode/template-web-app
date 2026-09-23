@@ -8,6 +8,7 @@
 
 - `.github/ISSUE_TEMPLATE/issue.md` — Issue の節構成
 - `.github/pull_request_template.md` — PR の節構成
+- `.github/CONTRIBUTING.md` — 人間の参画者向けの開発規約（ブランチ運用・コミット形式・コードの書き方）
 - `.gitattributes` — 追跡ファイルの保存形を LF に固定
 - `LICENSE` — MIT
 - `CLAUDE.md` — エージェント向けの引き継ぎ事項の雛形

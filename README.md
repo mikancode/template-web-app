@@ -32,4 +32,4 @@
 
 ### 開発フロー
 
-Issue → ブランチ → PR の流れで進める。詳細はコミットテンプレートと `CLAUDE.md` を参照。
+Issue → ブランチ → PR の流れで進める。詳細は [`CONTRIBUTING.md`](./.github/CONTRIBUTING.md) を参照。
